@@ -1,23 +1,29 @@
 import React, { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Disclosure, Transition } from "@headlessui/react";
-
-const PopupWidget = () => {
+type FormData = {
+  name: string;
+  apikey: string;
+  subject: string;
+  from_name: string;
+  botcheck: boolean;
+};
+const PopupWidget: React.FC = () => {
   const {
     register,
     handleSubmit,
     reset,
     control,
     formState: { errors, isSubmitSuccessful, isSubmitting },
-  } = useForm({
+  } = useForm<FormData>({
     mode: "onTouched",
   });
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [Message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [Message, setMessage] = useState<string>("");
 
   const userName = useWatch({ control, name: "name", defaultValue: "Someone" });
 
-  const onSubmit = async (data, e) => {
+  const onSubmit = async (data: FormData, e: React.FormEvent<HTMLFormElement>) => {
     console.log(data);
     await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -32,7 +38,7 @@ const PopupWidget = () => {
         if (json.success) {
           setIsSuccess(true);
           setMessage(json.message);
-          e.target.reset();
+          e.currentTarget.reset();
           reset();
         } else {
           setIsSuccess(false);
@@ -121,12 +127,12 @@ const PopupWidget = () => {
                       />
                       <input
                         type="hidden"
-                        value={`${userName} sent a message from Nextly`}
+                        value={`${userName} sent a message from Bonokey`}
                         {...register("subject")}
                       />
                       <input
                         type="hidden"
-                        value="Nextly Template"
+                        value="Bonokey"
                         {...register("from_name")}
                       />
                       <input

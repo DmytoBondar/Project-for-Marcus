@@ -5,11 +5,11 @@ import { Disclosure } from "@headlessui/react";
 
 const Navbar = () => {
   const navigation = [
-    "Product",
-    "Features",
-    "Pricing",
-    "Company",
-    "Blog",
+    "Home",
+    "Credit Cards",
+    "Loans",
+    "FAQ",
+    "About",
   ];
 
   return (
@@ -24,14 +24,13 @@ const Navbar = () => {
                   <span className="flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100">
                     <span>
                       <Image
-                        src="/img/logo.svg"
+                        src="/img/logo-black.svg"
                         alt="N"
                         width="32"
                         height="32"
-                        className="w-8"
+                        className="w-[80px] h-[32px] object-cover sm:h-[58px] sm:w-[148px] dark:text-gray-100"
                       />
                     </span>
-                    <span>Nextly</span>
                   </span>
                 </Link>
 
@@ -65,7 +64,7 @@ const Navbar = () => {
                           {item}
                       </Link>
                     ))}
-                    <Link href="/" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5">         
+                    <Link href="/signup" className="w-full px-6 py-2 mt-3 text-center text-white bg-indigo-600 rounded-md lg:ml-5">         
                         Get Started
                     </Link>
                   </>
@@ -89,11 +88,10 @@ const Navbar = () => {
         </div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <Link href="/" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
-              Get Started
+          <Link href="/signup" className="px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5">
+            Get Started
           </Link>
 
-          <ThemeChanger />
         </div>
       </nav>
     </div>
