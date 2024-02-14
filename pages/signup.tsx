@@ -44,7 +44,7 @@ function Signup () {
           if(res.ok) {
             localStorage.setItem('access_token', json.access_token);
             localStorage.setItem('user_id', json.user_id);
-            route.push('/en/creditcard');
+            route.push('/creditcard');
           }
           else setError(json.message)
         }
@@ -64,26 +64,27 @@ function Signup () {
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full bg-white-A700 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-blue_gray-800 md:text-2xl font-ibmplexsans">
+            <Link href="/" className="py-2 px-4 rounded-2xl bg-gray-100">Go to home</Link>
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-blue_gray-800 md:text-2xl ">
                 Create a new account
             </h1>
-            {error && <div className="font-ibmplexsans text-base text-red-600 font-normal">{error}</div>}
+            {error && <div className=" text-base text-red-600 font-normal">{error}</div>}
             <form className="space-y-4 md:space-y-6" action="#">
               <div>
-                <div className="flex mb-2 text-sm sm:text-base font-ibmplexsans font-medium text-blue_gray-800">Your email</div>
-                <CssStyledTextfield type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="bg-gray-50 border font-ibmplexsans border-gray-300 text-blue_gray-800 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 w-full" placeholder="name@company.com"/>
+                <div className="flex mb-2 text-sm sm:text-base  font-medium text-blue_gray-800">Your email</div>
+                <CssStyledTextfield type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="bg-gray-50 border  border-gray-300 text-blue_gray-800 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 w-full" placeholder="name@company.com"/>
               </div>
               <div>
-                <div className="flex mb-2 text-sm sm:text-base font-ibmplexsans font-medium text-blue_gray-800">Password</div>
-                <CssStyledTextfield type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="bg-gray-50 border font-ibmplexsans border-gray-300 text-blue_gray-800 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 w-full" />
+                <div className="flex mb-2 text-sm sm:text-base  font-medium text-blue_gray-800">Password</div>
+                <CssStyledTextfield type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="bg-gray-50 border  border-gray-300 text-blue_gray-800 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 w-full" />
               </div>
               <div>
-                <div className="flex mb-2 text-sm sm:text-base font-ibmplexsans font-medium text-blue_gray-800">Confirm Password</div>
-                <CssStyledTextfield type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="••••••••" className="bg-gray-50 border font-ibmplexsans border-gray-300 text-blue_gray-800 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 w-full" />
+                <div className="flex mb-2 text-sm sm:text-base  font-medium text-blue_gray-800">Confirm Password</div>
+                <CssStyledTextfield type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="••••••••" className="bg-gray-50 border  border-gray-300 text-blue_gray-800 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 w-full" />
               </div>
-              <div onClick={handleSignup} className="w-full text-white-A700 bg-blue-600 cursor-pointer hover:bg-primary-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm sm:text-base font-ibmplexsans px-5 py-2.5 text-center">Sign up</div>
-              <p className="text-sm font-light font-ibmplexsans text-gray-500">
-                  Do you already have an account? <Link href="/en/signin"><span className="font-medium text-blue-600 hover:underline text-sm font-ibmplexsans cursor-pointer">Sign in</span></Link>
+              <div onClick={handleSignup} className="w-full text-white-A700 bg-blue-600 cursor-pointer hover:bg-primary-700 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm sm:text-base  px-5 py-2.5 text-center">Sign up</div>
+              <p className="text-sm font-light  text-gray-500">
+                  Do you already have an account? <Link href="/signin"><span className="font-medium text-blue-600 hover:underline text-sm  cursor-pointer">Sign in</span></Link>
               </p>
             </form>
           </div>

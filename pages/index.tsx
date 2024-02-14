@@ -3,15 +3,36 @@ import Hero from "../components/hero";
 import Navbar from "../components/navbar";
 import SectionTitle from "../components/sectionTitle";
 
-import { benefitOne, benefitTwo } from "../components/data";
+import { benefitOne } from "../components/data";
 import Video from "../components/video";
 import Benefits from "../components/benefits";
 import Footer from "../components/footer";
 import Testimonials from "../components/testimonials";
 import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
+import type { InferGetStaticPropsType, GetStaticProps } from 'next'
 
-const Home = () => {
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+type Repo = {
+  Faqs: FaqItem[],
+}
+
+export const getStaticProps = (async () => {
+  const res = await fetch(`http://localhost:3000/api/getFaqs`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const repo = await res.json()
+  return { props: { repo } }
+}) 
+
+export default function Home({repo,
+}: InferGetStaticPropsType<typeof getStaticProps>){
   return (
     <>
       <Head>
@@ -42,11 +63,9 @@ const Home = () => {
       <Testimonials />
       <SectionTitle pretitle="FAQ" title="Frequently Asked Questions">
       </SectionTitle>
-      <Faq />
+      <Faq Faqs={repo} />
       <Footer />
       <PopupWidget />
     </>
   );
 }
-
-export default Home;

@@ -7,33 +7,17 @@ type FaqItem = {
   question: string;
   answer: string;
 };
-
-const Faq = (): JSX.Element => {
-  const faqdata: FaqItem[] = [
-    {
-      question: "Who we are?",
-      answer: "",
-    },
-    {
-      question: "What is our mission?",
-      answer: "Our mission is ...",
-    },
-    {
-      question: "What is your refund policy?",
-      answer:
-        "",
-    },
-    {
-      question: "Do you offer technical support?",
-      answer:
-        "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
-    },
-  ];
-
+type Repo = {
+  Faqs: {
+    data: FaqItem[],
+  },
+}
+export default function Faq (props: Repo) {
+  const faqData = props.Faqs.data;
   return (
     <Container className="!p-0">
       <div className="w-full max-w-2xl p-2 mx-auto rounded-2xl">
-        {faqdata.map((item, index) => (
+        {faqData.map((item, index) => (
           <div key={item.question} className="mb-5">
             <Disclosure>
               {({ open }) => (
@@ -58,5 +42,3 @@ const Faq = (): JSX.Element => {
     </Container>
   );
 };
-
-export default Faq;
